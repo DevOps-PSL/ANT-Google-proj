@@ -1,24 +1,13 @@
 <?xml version="1.0"?>
 <project name="Persistent Project1" default="all">
 	<property name="MyProject1" location="C:/MyProject1"/>
-	<property name="src.dir" location="${MyProject1}/src"/>
+	<property name="src" location="${MyProject1}/src"/>
 	<property name="bin" location="${MyProject1}/bin"/>
 	<property name="test" location="${MyProject1}/test"/>
 	<property name="report" location="${MyProject1}/report"/>
 	<property name="doc" location="${MyProject1}/doc"/>
 	<property name="deploy" location="${MyProject1}/deploy"/>
-	<property name="web.dir" value="${MyProject1}/war"/>
-	<property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
-
-	
-   <path id="master-classpath">
-      <fileset dir="${web.dir}/WEB-INF/lib">
-         <include name="*.jar"/>
-      </fileset>
-      <pathelement path="${build.dir}"/>
-   </path>
-
- 
+		
 	<target name="Clean">
 		<echo>Cleaning</echo>
 		<delete dir="${MyProject}"/>
@@ -27,7 +16,7 @@
 	<target name="Init" depends="Clean">
 		<echo>Initialization</echo>
 		<mkdir dir="${MyProject1}"/>
-		<mkdir dir="${src.dir}"/>
+		<mkdir dir="${src}"/>
 		<mkdir dir="${bin}"/>
 		<mkdir dir="${test}"/>
 		<mkdir dir="${report}"/>
