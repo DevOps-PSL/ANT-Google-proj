@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<project name="Persistent Project1" default="all">
+	<property name="MyProject1" location="C:/MyProject1"/>
+	<property name="src.dir" location="${MyProject1}/src"/>
+	<property name="bin" location="${MyProject1}/bin"/>
+	<property name="test" location="${MyProject1}/test"/>
+	<property name="report" location="${MyProject1}/report"/>
+	<property name="doc" location="${MyProject1}/doc"/>
+	<property name="deploy" location="${MyProject1}/deploy"/>
+	<property name="web.dir" value="${MyProject1}/war"/>
+	<property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
+
+	
+   <path id="master-classpath">
+      <fileset dir="${web.dir}/WEB-INF/lib">
+         <include name="*.jar"/>
+      </fileset>
+      <pathelement path="${build.dir}"/>
+   </path>
+
+ 
+	<target name="Clean">
+		<echo>Cleaning</echo>
+		<delete dir="${MyProject}"/>
+	</target>
+
+	<target name="Init" depends="Clean">
+		<echo>Initialization</echo>
+		<mkdir dir="${MyProject1}"/>
+		<mkdir dir="${src.dir}"/>
+		<mkdir dir="${bin}"/>
+		<mkdir dir="${test}"/>
+		<mkdir dir="${report}"/>
+		<mkdir dir="${doc}"/>
+		<mkdir dir="${deploy}"/>
+	</target>
+
+	<target name="Copy" depends="Init">
+    	<echo>Copying code from source code directory</echo>
+	</target>
+
+	<target name="Compile" depends="Copy">
+    	<echo>Compiling the source code</echo>
+	</target>
+
+	<target name="Test" depends="Compile">
+   		<echo>Testing code using Junit test cases</echo>
+	</target>
+
+	<target name="Report" depends="Test">
+   		<echo>Generating Reports</echo>
+	</target>
+
+	<target name="Doc" depends="Report">
+    	<echo>Generating Documents</echo>
+	</target>
+
+	<target name="Package" depends="Doc">
+    	<echo>Packaging</echo>
+	</target>
+
+	<target name="Deploy" depends="Package">
+    	<echo>Deploying</echo>
+	</target>
+
+	<target name="all" depends="Deploy">
+		<echo>Welcome to ANT Script!!</echo>
+	</target>
+
+
+</project>
